@@ -79,30 +79,72 @@
         "routing": {
             "config": {
                 "routerClass": "sap.m.routing.Router",
-                "controlAggregation": "pages",
-                "controlId": "app",
-                "transition": "slide",
-                "type": "View",
                 "viewType": "XML",
-                "path": "djp.listdetail.zblistdetail.view",
                 "async": true,
-                "viewPath": "djp.listdetail.zblistdetail.view"
-            },
+                "viewPath": "djp.listdetail.zblistdetail.view",
+                "controlAggregation": "beginColumnPages",
+                "controlId": "layout",
+                "bypassed": {
+                    "target": [
+                        "masterlist",
+                        "notFound"
+                    ]
+                }
+               },
             "routes": [
                 {
-                    "name": "RouteList",
-                    "pattern": ":?query:",
+                    "name": "masterlist",
+                    "pattern": "",
+                    "titleTarget": "",
+                    "greedy": false,
                     "target": [
-                        "TargetList"
+                        "masterlist"
+                    ]
+                },
+                {
+                    "name": "carrierdetails",
+                    "pattern": "Carriers/{objectId}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "masterlist",
+                        "carrierdetails"
                     ]
                 }
             ],
             "targets": {
-                "TargetList": {
-                    "id": "List",
-                    "name": "List"
+                "masterlist": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "ControlAggregation": "beginColumnPages",
+                    "viewId": "list",
+                    "viewName": "List",
+                    "viewLevel": 1
+                },
+                "carrierdetails": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewLevel": 2,
+                    "controlAggregation": "midColumnPages",
+                    "viewName": "Detail",
+                    "viewId": "carrierdetails"
+                },
+                "notFound": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "controlAggregation": "midColumnPages",
+                    "clearControlAggregation": true,
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "detailObjectNotFound": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "controlAggregation": "midColumnPages",
+                    "clearControlAggregation": true,
+                    "viewName": "DetailObjectNotFound",
+                    "viewId": "detailObjectNotFound"
                 }
-            }
         },
         "rootView": {
             "viewName": "djp.listdetail.zblistdetail.view.App",
