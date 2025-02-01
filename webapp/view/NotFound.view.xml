@@ -1,6 +1,10 @@
 <mvc:View controllerName="djp.listdetail.zblistdetail.controller.NotFound"
-    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-    </Page>
+    <MessagePage
+        id="notFoundMessagePage"
+        title="{i18n>notFoundTitle}"
+        text="{i18n>notFoundText}"
+        icon="sap-icon://document">
+    </MessagePage>
 </mvc:View>
