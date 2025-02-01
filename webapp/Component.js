@@ -1,26 +1,32 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "djp/listdetail/zblistdetail/model/models"
-], (UIComponent, models) => {
-    "use strict";
+    "sap/ui/Device",
+    "djp/listdetail/zblistdetail/model/models",
+    "djp/listdetail/zblistdetail/controller/ListSelector"
+],
+    function (UIComponent, Device, models, ListSelector) {
+        "use strict";
 
-    return UIComponent.extend("djp.listdetail.zblistdetail.Component", {
-        metadata: {
-            manifest: "json",
-            interfaces: [
-                "sap.ui.core.IAsyncContentCreation"
-            ]
-        },
+        return UIComponent.extend("djp.listdetail.zblistdetail.Component", {
+            metadata: {
+                manifest: "json",
+                interfaces: [
+                    "sap.ui.core.IAsyncContentCreation"
+                ]
+            },
 
-        init: function () {
-            // call the base component's init function
-            UIComponent.prototype.init.apply(this, arguments);
+            init: function () {
+                // call the base component's init function
+                UIComponent.prototype.init.apply(this, arguments);
 
-            // enable routing
-            this.getRouter().initialize();
+                // instantiation of the listselector
+                this.oListSelector = new ListSelector();
 
-            // set the device model
-            this.setModel(models.createDeviceModel(), "device");
-        },
+                // enable routing
+                this.getRouter().initialize();
+
+                // set the device model
+                this.setModel(models.createDeviceModel(), "device");
+            }
+        });
     });
-});
