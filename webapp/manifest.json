@@ -145,6 +145,7 @@
                     "viewName": "DetailObjectNotFound",
                     "viewId": "detailObjectNotFound"
                 }
+            }
         },
         "rootView": {
             "viewName": "djp.listdetail.zblistdetail.view.App",
